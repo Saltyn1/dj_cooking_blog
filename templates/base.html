@@ -19,7 +19,7 @@
 
 							<!-- Header -->
 								<header id="header">
-									<a href="index.html" class="logo"><strong>Editorial</strong> by HTML5 UP</a>
+
 									<ul class="icons">
 										<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
 										<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
@@ -38,8 +38,8 @@
 
 							<!-- Search -->
 								<section id="search" class="alt">
-									<form method="post" action="#">
-										<input type="text" name="query" id="query" placeholder="Search" />
+									<form method="get" action="{% url 'home'%}">
+										<input type="text" name="q" id="query" placeholder="Search" />
 									</form>
 								</section>
 
@@ -50,8 +50,7 @@
 									</header>
 									<ul>
 										<li><a href="{% url 'home' %}">Homepage</a></li>
-										<li><a href="generic.html">Generic</a></li>
-										<li><a href="elements.html">Elements</a></li>
+<!--										<li><a href="elements.html">Elements</a></li>-->
 										<li>
 											<span class="opener">Submenu</span>
 											<ul>
@@ -62,51 +61,51 @@
 											</ul>
 										</li>
 										<li><a href="{% url 'add-recipe' %}">Add my own recipe</a></li>
+										<li><a href="{% url 'home' %}?filter=new">New Recipes</a></li>
 
 									</ul>
 								</nav>
 
 							<!-- Section -->
-								<section>
-									<header class="major">
-										<h2>Ante interdum</h2>
-									</header>
-									<div class="mini-posts">
-										<article>
-											<a href="#" class="image"><img src="images/pic07.jpg" alt="" /></a>
-											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
-										</article>
-										<article>
-											<a href="#" class="image"><img src="images/pic08.jpg" alt="" /></a>
-											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
-										</article>
-										<article>
-											<a href="#" class="image"><img src="images/pic09.jpg" alt="" /></a>
-											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
-										</article>
-									</div>
-									<ul class="actions">
-										<li><a href="#" class="button">More</a></li>
-									</ul>
-								</section>
+<!--								<section>-->
+<!--									<header class="major">-->
+<!--										<h2>Ante interdum</h2>-->
+<!--									</header>-->
+<!--									<div class="mini-posts">-->
+<!--										<article>-->
+<!--											<a href="#" class="image"><img src="images/pic07.jpg" alt="" /></a>-->
+<!--											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>-->
+<!--										</article>-->
+<!--										<article>-->
+<!--											<a href="#" class="image"><img src="images/pic08.jpg" alt="" /></a>-->
+<!--											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>-->
+<!--										</article>-->
+<!--										<article>-->
+<!--											<a href="#" class="image"><img src="images/pic09.jpg" alt="" /></a>-->
+<!--											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>-->
+<!--										</article>-->
+<!--									</div>-->
+<!--									<ul class="actions">-->
+<!--										<li><a href="#" class="button">More</a></li>-->
+<!--									</ul>-->
+<!--								</section>-->
 
 							<!-- Section -->
 								<section>
 									<header class="major">
 										<h2>Get in touch</h2>
 									</header>
-									<p>Sed varius enim lorem ullamcorper dolore aliquam aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin sed aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+									<p>If you have any question, please free to contact.</p>
 									<ul class="contact">
-										<li class="icon solid fa-envelope"><a href="#">information@untitled.tld</a></li>
-										<li class="icon solid fa-phone">(000) 000-0000</li>
-										<li class="icon solid fa-home">1234 Somewhere Road #8254<br />
-										Nashville, TN 00000-0000</li>
+										<li class="icon solid fa-envelope"><a href="#">salta@gmail.com</a></li>
+										<li class="icon solid fa-phone">+996 555 987645</li>
+										<li class="icon solid fa-home">apt.38, Str.Ryskulova 95 </li>
 									</ul>
 								</section>
 
 							<!-- Footer -->
 								<footer id="footer">
-									<p class="copyright">&copy; Untitled. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+									<p class="copyright">&copy; Kyrgyzstan, Bishkek city <a href="https://unsplash.com"></a></p>
 								</footer>
 
 						</div>
