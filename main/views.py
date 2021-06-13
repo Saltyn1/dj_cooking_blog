@@ -1,7 +1,8 @@
 from datetime import timedelta
 
+from django.contrib.auth.decorators import login_required
 from django.db.models import Q
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.forms import modelformset_factory
 from django.contrib import messages
@@ -81,7 +82,7 @@ class RecipeDetailView(DetailView):
         context['images'] = self.get_object().images.exclude(id=image.id)
         return context
 
-
+@login_required(login_url='login')
 def add_recipe(request):
     ImageFormSet = modelformset_factory(Image, form=ImageForm, max_num=5)
     if request.method =='POST':
@@ -99,20 +100,25 @@ def add_recipe(request):
         formset = ImageFormSet(queryset=Image.objects.none())
     return render(request, 'add_recipe.html', locals())
 
+
 def update_recipe(request, pk):
     recipe = get_object_or_404(Recipe, pk=pk)
-    ImageFormSet = modelformset_factory(Image, form=ImageForm, max_num=5)
-    recipe_form = RecipeForm(request.POST or None, instance=recipe)
-    formset = ImageFormSet(request.POST or None, request.FILES or None, queryset=Image.objects.filter(recipe=recipe))
-    if recipe_form.is_valid() and formset.is_valid():
-        recipe = recipe_form.save()
+    if request.user == recipe.user:
+         ImageFormSet = modelformset_factory(Image, form=ImageForm, max_num=5)
+         recipe_form = RecipeForm(request.POST or None, instance=recipe)
+         formset = ImageFormSet(request.POST or None, request.FILES or None, queryset=Image.objects.filter(recipe=recipe))
+         if recipe_form.is_valid() and formset.is_valid():
+            recipe = recipe_form.save()
 
-        for form in formset:
-            image = form.save(commit=False)
-            image.recipe = recipe
-            image.save()
-        return redirect(recipe.get_absolute_url())
-    return render(request, 'update_recipe.html', locals())
+            for form in formset:
+                 image = form.save(commit=False)
+                 image.recipe = recipe
+                 image.save()
+            return redirect(recipe.get_absolute_url())
+         return render(request, 'update_recipe.html', locals())
+    else:
+         return HttpResponse('<h1> 403 Forbidden </h>')
+
 
 # def delete_recipe(request, pk):
 #     recipe = get_object_or_404(Recipe, pk=pk)
